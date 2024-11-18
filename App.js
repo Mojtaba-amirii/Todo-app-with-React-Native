@@ -1,36 +1,49 @@
-import * as React from "react";
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import HomeScreen from "./components/HomeScreen";
-import DetailsScreen from "./components/DetailsScreen";
-import ModalScreen from "./components/ModalScreen";
-import { Button } from "react-native";
+import { StatusBar } from "expo-status-bar";
+import HomeScreen from "./src/screens/HomeScreen";
+import DetailsScreen from "./src/screens/DetailsScreen";
+import AddEditTodoScreen from "./src/screens/AddEditTodoScreen";
+import { TodoProvider } from "./src/context/TodoContext";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{
-            title: "Todos",
-            headerRight: () => <Button title="Add todos" />,
+    <TodoProvider>
+      <NavigationContainer>
+        <StatusBar style="auto" />
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: "#6200ee",
+            },
+            headerTintColor: "#ffffff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
           }}
-        />
-        <Stack.Screen
-          name="Details"
-          component={DetailsScreen}
-          options={{ title: "Todos Details" }}
-        />
-        <Stack.Screen
-          name="Add todos"
-          component={ModalScreen}
-          options={{ title: "Add todos" }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+        >
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{ title: "My Todos" }}
+          />
+          <Stack.Screen
+            name="Details"
+            component={DetailsScreen}
+            options={{ title: "Todo Details" }}
+          />
+          <Stack.Screen
+            name="AddEditTodo"
+            component={AddEditTodoScreen}
+            options={({ route }) => ({
+              title: route.params?.todo ? "Edit Todo" : "Add Todo",
+            })}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </TodoProvider>
   );
 }
