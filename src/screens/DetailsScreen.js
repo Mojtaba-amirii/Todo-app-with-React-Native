@@ -1,7 +1,6 @@
-import React from "react";
-import { View, StyleSheet, Alert, TouchableOpacity } from "react-native";
 import { Text } from "react-native";
 import { useTodos } from "../context/TodoContext";
+import { View, StyleSheet, Alert, TouchableOpacity } from "react-native";
 
 export default function DetailsScreen({ navigation, route }) {
   const { todo } = route.params;

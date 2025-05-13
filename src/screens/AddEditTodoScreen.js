@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   View,
   StyleSheet,
@@ -8,8 +8,8 @@ import {
   Platform,
 } from "react-native";
 import { Text } from "react-native";
-import DateTimePicker from "@react-native-community/datetimepicker";
 import { useTodos } from "../context/TodoContext";
+import DateTimePicker from "@react-native-community/datetimepicker";
 
 export default function AddEditTodoScreen({ navigation, route }) {
   const { addTodo, updateTodo } = useTodos();
@@ -43,7 +43,7 @@ export default function AddEditTodoScreen({ navigation, route }) {
     setShowDatePicker(true);
   };
 
-  const handleDateChange = (event, selectedDate) => {
+  const handleDateChange = (selectedDate) => {
     const currentDate = selectedDate || dueDate;
     setShowDatePicker(Platform.OS === "ios");
     setDueDate(currentDate);

@@ -1,11 +1,10 @@
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
 import HomeScreen from "./src/screens/HomeScreen";
 import DetailsScreen from "./src/screens/DetailsScreen";
-import AddEditTodoScreen from "./src/screens/AddEditTodoScreen";
 import { TodoProvider } from "./src/context/TodoContext";
+import { NavigationContainer } from "@react-navigation/native";
+import AddEditTodoScreen from "./src/screens/AddEditTodoScreen";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Stack = createNativeStackNavigator();
 
