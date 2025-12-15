@@ -22,6 +22,9 @@ export default function App() {
             headerTitleStyle: {
               fontWeight: "bold",
             },
+            headerShown: true,
+            gestureEnabled: true,
+            animation: "default",
           }}
         >
           <Stack.Screen

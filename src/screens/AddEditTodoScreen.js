@@ -43,7 +43,7 @@ export default function AddEditTodoScreen({ navigation, route }) {
     setShowDatePicker(true);
   };
 
-  const handleDateChange = (selectedDate) => {
+  const handleDateChange = (event, selectedDate) => {
     const currentDate = selectedDate || dueDate;
     setShowDatePicker(Platform.OS === "ios");
     setDueDate(currentDate);
